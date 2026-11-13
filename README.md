@@ -1,6 +1,6 @@
 # banco-lab
 
-Projeto de estudo para a vaga de desenvolvedor pleno (Java / Spring / arquitetura) em banco.
+Projeto de estudo.
 É um banco digital bem pequeno, com **dois serviços que conversam pela rede**. Você aprende implementando: o projeto traz um fluxo completo pronto como referência e uma trilha de desafios para você construir o resto.
 
 | Serviço | Porta | O que é | Estado |
