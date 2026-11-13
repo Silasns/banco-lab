@@ -1,0 +1,41 @@
+### Arquivo de requisicoes. Abra no IntelliJ (HTTP Client) ou no VS Code
+### (extensao REST Client) e clique em "Send Request" em cima de cada bloco.
+### CPFs validos para teste: 529.982.247-25, 390.533.447-05, 111.444.777-35 (este o antifraude reprova)
+
+### Abrir conta (fluxo de exemplo, ja funciona)
+POST http://localhost:8080/contas
+Content-Type: application/json
+
+{
+  "titular": "Maria Silva",
+  "cpf": "529.982.247-25"
+}
+
+### Abrir conta com CPF que o antifraude reprova -> 422
+POST http://localhost:8080/contas
+Content-Type: application/json
+
+{
+  "titular": "Joao Souza",
+  "cpf": "111.444.777-35"
+}
+
+### Consultar o antifraude direto
+GET http://localhost:8081/analises/52998224725
+
+### Modo caos: antifraude lento (3 segundos)
+PUT http://localhost:8081/caos?latenciaMs=3000
+
+### Modo caos: antifraude falhando metade das vezes
+PUT http://localhost:8081/caos?taxaErro=0.5
+
+### Modo caos: desligar
+DELETE http://localhost:8081/caos
+
+### ---------- Desafio 1 (ainda nao existe: voce vai implementar) ----------
+
+### Buscar conta por id (path param) - troque pelo id devolvido no POST
+GET http://localhost:8080/contas/00000000-0000-0000-0000-000000000000
+
+### Listar contas com filtros (query param)
+GET http://localhost:8080/contas?titular=maria&status=ATIVA

@@ -1,0 +1,23 @@
+# Infraestrutura opcional para os desafios. O projeto base roda SEM isso (usa H2).
+#
+#   docker compose up -d sqlserver     -> Desafio 7 (SQL Server)
+#   docker compose up -d mongo         -> Desafio 7 (NoSQL / modelo de leitura do CQRS)
+#   docker compose up -d zipkin        -> Desafio 6 (rastreamento distribuido)
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "BancoLab@2026"
+    ports:
+      - "1433:1433"
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+
+  zipkin:
+    image: openzipkin/zipkin:3
+    ports:
+      - "9411:9411"
