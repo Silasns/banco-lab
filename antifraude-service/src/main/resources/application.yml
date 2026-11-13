@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: antifraude-service
+
+antifraude:
+  # CPFs (somente digitos) que a analise sempre reprova.
+  cpfs-bloqueados:
+    - "11144477735"
